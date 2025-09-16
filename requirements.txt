@@ -16,3 +16,4 @@ flasgger
 authlib 
 werkzeug  
 requests
+pyopenssl
