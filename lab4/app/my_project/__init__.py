@@ -28,15 +28,9 @@ def create_app(app_config: Dict[str, Any], additional_config: Dict[str, Any]) ->
     app.config["SECRET_KEY"] = secrets.token_hex(16)
     app.config = {**app.config, **app_config}
     app.config['SWAGGER'] = {
-        'title': 'My API',
         'ui_params': {
-            'docExpansion': 'none'
+            'docExpansion': 'none',
         },
-        'info': {
-            'title': 'My API',
-            'version': '1.0',
-            'description': '<a href="/logout" style="position:absolute;top:10px;right:20px;z-index:1000;" class="btn btn-danger">Logout</a>'
-        }
     }
 
     Swagger(app)
