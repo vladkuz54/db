@@ -52,6 +52,7 @@ if __name__ == "__main__":
 
     app = create_app(config_data, additional_cfg)
 
+
     if flask_env == DEVELOPMENT:
         app.run(host=HOST, port=port, debug=debug)
     else:
