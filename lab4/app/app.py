@@ -54,8 +54,6 @@ if __name__ == "__main__":
 
 
     if flask_env == DEVELOPMENT:
-        cert_path = os.path.join(os.path.dirname(__file__), 'certs', 'localhost+2.pem')
-        key_path = os.path.join(os.path.dirname(__file__), 'certs', 'localhost+2-key.pem')
-        app.run(host=HOST, port=port, debug=debug, ssl_context=(cert_path, key_path))
+        app.run(host=HOST, port=port, debug=debug, ssl_context='adhoc')
     else:
         serve(app, host=HOST, port=port, ssl_context='adhoc')
