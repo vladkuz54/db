@@ -5,12 +5,12 @@ COMMON: &common
 development:
   <<: *common
   DEBUG: True
-  SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://${{ secrets.MYSQL_ROOT_USER }}:${{ secrets.MYSQL_ROOT_PASSWORD }}@${{ secrets.ENDPOINT }}:3306/lab4'
+  SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://admin:2077vKuZ@database-1.cris2q86si77.eu-north-1.rds.amazonaws.com:3306/lab4'
 
 production:
   <<: *common
-  SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://${{ secrets.MYSQL_ROOT_USER }}:${{ secrets.MYSQL_ROOT_PASSWORD }}@${{ secrets.ENDPOINT }}:3306/lab4'
+  SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://admin:2077vKuZ@database-1.cris2q86si77.eu-north-1.rds.amazonaws.com:3306/lab4'
 
 ADDITIONAL_CONFIG:
-  MYSQL_ROOT_USER: ${{ secrets.MYSQL_ROOT_USER }}
-  MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+  MYSQL_ROOT_USER: admin
+  MYSQL_ROOT_PASSWORD: 2077vKuZ
