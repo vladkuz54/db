@@ -54,6 +54,6 @@ if __name__ == "__main__":
 
 
     if flask_env == DEVELOPMENT:
-        app.run(host=HOST, port=port, debug=debug, ssl_context='adhoc')
+        app.run(host=HOST, port=port, debug=debug)
     else:
-        serve(app, host=HOST, port=port, ssl_context='adhoc')
+        serve(app, host=HOST, port=port)
