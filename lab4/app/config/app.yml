@@ -6,10 +6,14 @@ development:
   <<: *common
   DEBUG: True
   SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://admin:2077vKuZ@database-1.cris2q86si77.eu-north-1.rds.amazonaws.com:3306/lab4'
+  SQLALCHEMY_BINDS:
+    accounts_db: 'mysql+pymysql://admin:2077vKuZ@database-1.cris2q86si77.eu-north-1.rds.amazonaws.com:3306/accounts'
 
 production:
   <<: *common
   SQLALCHEMY_DATABASE_URI: 'mysql+pymysql://admin:2077vKuZ@database-1.cris2q86si77.eu-north-1.rds.amazonaws.com:3306/lab4'
+  SQLALCHEMY_BINDS:
+    accounts_db: 'mysql+pymysql://admin:2077vKuZ@database-1.cris2q86si77.eu-north-1.rds.amazonaws.com:3306/accounts'
 
 ADDITIONAL_CONFIG:
   MYSQL_ROOT_USER: admin
