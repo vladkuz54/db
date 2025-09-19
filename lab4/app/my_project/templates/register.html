@@ -32,7 +32,6 @@
             });
             const data = await response.json();
             if (response.ok) {
-                // Після реєстрації одразу логін
                 const loginResp = await fetch('/login', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
@@ -51,17 +50,6 @@
                 document.getElementById('result').className = 'alert alert-danger mt-3';
             }
         });
-    </script>
-    <!-- Додаємо автозаповнення токена у Swagger UI -->
-    <script>
-        if (window.location.pathname.startsWith('/swagger')) {
-            window.onload = function() {
-                const token = localStorage.getItem('jwt_token');
-                if (token && window.ui) {
-                    window.ui.preauthorizeApiKey('Bearer', 'Bearer ' + token);
-                }
-            }
-        }
     </script>
 </body>
 </html>

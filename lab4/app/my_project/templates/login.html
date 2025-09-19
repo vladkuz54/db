@@ -32,9 +32,7 @@
             });
             const data = await response.json();
             if (response.ok && data.access_token) {
-                // Зберігаємо токен
                 localStorage.setItem('jwt_token', data.access_token);
-                // Переходимо до Swagger UI
                 window.location.href = '/apidocs';
             } else {
                 document.getElementById('result').textContent = data.msg || 'Login error';
@@ -42,9 +40,7 @@
             }
         });
     </script>
-    <!-- Додаємо автозаповнення токена у Swagger UI -->
     <script>
-        // Якщо ми на сторінці /apidocs, вставляємо токен автоматично
         if (window.location.pathname.startsWith('/apidocs')) {
             window.onload = function() {
                 const token = localStorage.getItem('jwt_token');
