@@ -1,12 +1,9 @@
 import os
-from http import HTTPStatus
 import secrets
 from typing import Dict, Any
 from flasgger import Swagger
 
 from flask import Flask
-from flask_restx import Api, Resource
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_utils import database_exists, create_database
 
@@ -31,16 +28,8 @@ def create_app(app_config: Dict[str, Any], additional_config: Dict[str, Any]) ->
     app.config['SWAGGER'] = {
         'ui_params': {
             'docExpansion': 'none',
-        },
-        'security': [{'Bearer': []}],
-        'info': {
-            'title': 'My Project API',
-            'version': '1.0',
-            'description': '<a href="/logout" class="btn btn-danger" style="position:absolute;top:10px;right:20px;z-index:1000;">Logout</a>'
         }
     }
-    app.config["JWT_SECRET_KEY"] = secrets.token_hex(16)
-    jwt = JWTManager(app)
 
     Swagger(app)
 
@@ -53,15 +42,8 @@ def create_app(app_config: Dict[str, Any], additional_config: Dict[str, Any]) ->
 def _init_db(app: Flask) -> None:
     db.init_app(app)
 
-    # Створити основну БД, якщо не існує
     if not database_exists(app.config[SQLALCHEMY_DATABASE_URI]):
         create_database(app.config[SQLALCHEMY_DATABASE_URI])
-
-    # Створити всі binds-БД, якщо не існують
-    binds = app.config.get("SQLALCHEMY_BINDS", {})
-    for uri in binds.values():
-        if not database_exists(uri):
-            create_database(uri)
 
     import lab4.app.my_project.auth.domain
     with app.app_context():
@@ -72,7 +54,4 @@ def _process_input_config(app_config: Dict[str, Any], additional_config: Dict[st
     root_user = os.getenv(MYSQL_ROOT_USER, additional_config[MYSQL_ROOT_USER])
     root_password = os.getenv(MYSQL_ROOT_PASSWORD, additional_config[MYSQL_ROOT_PASSWORD])
     app_config[SQLALCHEMY_DATABASE_URI] = app_config[SQLALCHEMY_DATABASE_URI].format(root_user, root_password)
-    # Додаємо підстановку для всіх binds
-    if "SQLALCHEMY_BINDS" in app_config:
-        for key, uri in app_config["SQLALCHEMY_BINDS"].items():
-            app_config["SQLALCHEMY_BINDS"][key] = uri.format(root_user, root_password)
+    pass

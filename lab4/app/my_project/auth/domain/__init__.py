@@ -8,4 +8,3 @@ from lab4.app.my_project.auth.domain.orders.terminal import Terminal
 from lab4.app.my_project.auth.domain.orders.service_job import ServiceJob
 from lab4.app.my_project.auth.domain.orders.service_job_masters import ServiceJobMasters
 from lab4.app.my_project.auth.domain.orders.invoices import Invoices
-from lab4.app.my_project.auth.domain.orders.accounts import Account

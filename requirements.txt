@@ -13,4 +13,3 @@ redis
 SQLAlchemy==1.4.48
 pymysql
 flasgger
-flask-jwt-extended

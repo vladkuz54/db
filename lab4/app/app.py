@@ -1,9 +1,9 @@
 import os
 from waitress import serve
 import yaml
-
-
 import sys
+
+
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 from lab4.app.my_project import create_app
