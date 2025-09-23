@@ -224,4 +224,6 @@ begin
 	where sjm.service_job_id = service_jod_id;
 end ///
 
+
+
 delimiter ;
