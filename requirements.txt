@@ -14,3 +14,4 @@ SQLAlchemy==1.4.48
 pymysql
 flasgger
 cryptography
+requests
