@@ -1,5 +1,8 @@
 use lab4;
 
+SET NAMES 'utf8mb4';
+SET CHARACTER SET utf8mb4;
+
 insert into lab4.client (name) values
 ("Близенько"),
 ("Свій маркет"),
@@ -223,7 +226,6 @@ begin
 	join service_job_masters sjm on sj.id = sjm.master_id
 	where sjm.service_job_id = service_jod_id;
 end ///
-
 
 
 delimiter ;

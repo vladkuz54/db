@@ -2,7 +2,7 @@ import os
 from waitress import serve
 import yaml
 import sys
-
+from sqlalchemy import text, inspect
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
@@ -51,7 +51,6 @@ if __name__ == "__main__":
         config_data["SQLALCHEMY_DATABASE_URI"] = _normalize_mysql_uri(yaml_db_url)
 
     app = create_app(config_data, additional_cfg)
-
 
     if flask_env == DEVELOPMENT:
         app.run(host=HOST, port=port, debug=debug)

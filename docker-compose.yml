@@ -1,0 +1,27 @@
+
+
+services:
+  web:
+    build: .
+    container_name: backend
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=mysql://root:2077vkuz@db:3306/lab4
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: database
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 2077vkuz
+      MYSQL_DATABASE: lab4
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
