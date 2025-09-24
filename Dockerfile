@@ -16,5 +16,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 EXPOSE 5000
+COPY lab4/app/app.py /lab4/app/app.py
 
 CMD ["sh", "-c", "sleep 20 && python lab4/app/app.py"]
