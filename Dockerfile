@@ -5,7 +5,6 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-# Встановити системні залежності для mysqlclient
 RUN apt-get update && \
     apt-get install -y gcc default-libmysqlclient-dev build-essential pkg-config && \
     rm -rf /var/lib/apt/lists/*
@@ -18,4 +17,4 @@ COPY . .
 EXPOSE 5000
 COPY lab4/app/app.py /lab4/app/app.py
 
-CMD ["sh", "-c", "sleep 20 && python lab4/app/app.py"]
+CMD ["sh", "-c", "sleep 20 && python /lab4/app/app.py"]
